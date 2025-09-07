@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IDepartment } from '../../../core/mock-data';
-import { DepartmentService } from '../../../core/services/department.service';
 import { CommonModule } from '@angular/common';
+import { IDepartment } from '../../../shared/model/department';
+import { DepartmentService } from '../../../shared/services/department.service';
 
 @Component({
   selector: 'app-department-list',

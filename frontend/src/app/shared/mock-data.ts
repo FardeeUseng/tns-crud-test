@@ -1,16 +1,5 @@
-// src/app/core/mock-data.ts
-
-export interface IDepartment {
-  id: number;
-  name: string;
-}
-
-export interface IUser {
-  id: number;
-  name: string;
-  email: string;
-  departmentId: number;
-}
+import { IDepartment } from "./model/department";
+import { IUser } from "./model/user";
 
 // Mock Departments
 export const departments: IDepartment[] = [
