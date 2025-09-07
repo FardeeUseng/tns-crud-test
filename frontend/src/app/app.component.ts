@@ -1,12 +1,31 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { DepartmentFormComponent } from './features/department/department-form/department-form.component';
+import { DepartmentListComponent } from './features/department/department-list/department-list.component';
+import { UserFormComponent } from './features/user/user-form/user-form.component';
+import { UserListComponent } from './features/user/user-list/user-list.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [
+    DepartmentFormComponent,
+    DepartmentListComponent,
+    UserFormComponent,
+    UserListComponent,
+    CommonModule,
+  ],
 })
 export class AppComponent {
-  title = 'frontend';
+  currentView: 'department' | 'user' = 'department';
+  isFormOpen = false;
+
+  switchView(type: 'department' | 'user') {
+    this.currentView = type;
+    this.isFormOpen = false;
+  }
+
+  toggleForm() {
+    this.isFormOpen = !this.isFormOpen;
+  }
 }
