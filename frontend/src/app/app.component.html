@@ -4,20 +4,22 @@
     <div class="flex gap-x-2 mt-10 mb-5">
       <button
         (click)="switchView('department')"
+        class="px-4 py-2 rounded"
         [ngClass]="
           currentView === 'department'
-            ? 'px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600'
-            : 'px-4 py-2 rounded bg-gray-200 hover:bg-gray-300'
+            ? 'bg-blue-500 text-white hover:bg-blue-600'
+            : 'bg-gray-200 hover:bg-gray-300'
         "
       >
         Departments
       </button>
       <button
         (click)="switchView('user')"
+        class="px-4 py-2 rounded"
         [ngClass]="
           currentView === 'user'
-            ? 'px-4 py-2 ml-2 rounded bg-blue-500 text-white hover:bg-blue-600'
-            : 'px-4 py-2 ml-2 rounded bg-gray-200 hover:bg-gray-300'
+            ? 'bg-blue-500 text-white hover:bg-blue-600'
+            : 'bg-gray-200 hover:bg-gray-300'
         "
       >
         Users
@@ -46,7 +48,7 @@
     </ng-container>
     <ng-template #userBlock>
       <app-user-list></app-user-list>
-      <app-user-form></app-user-form>
+      <app-user-form [isOpen]="isFormOpen"></app-user-form>
     </ng-template>
   </div>
 </main>

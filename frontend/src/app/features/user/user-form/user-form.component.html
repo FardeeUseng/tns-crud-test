@@ -1,1 +1,36 @@
-<p>user-form works!</p>
+<app-modal title="Add Department" [isOpen]="isOpen">
+  <form class="space-y-4">
+    <div>
+      <label class="block text-sm font-medium">Department Name</label>
+      <input
+        type="text"
+        class="w-full border rounded px-3 py-2 mt-1"
+        placeholder="Department name"
+      />
+    </div>
+    <div>
+      <label
+        for="category"
+        class="text-sm font-medium"
+        >Department</label
+      >
+      <select
+        class="bg-gray-50 border text-gray-900 text-sm rounded-lg block w-full p-2.5"
+      >
+        <option selected="">Select category</option>
+        <option value="TV">TV/Monitors</option>
+        <option value="PC">PC</option>
+        <option value="GA">Gaming/Console</option>
+        <option value="PH">Phones</option>
+      </select>
+    </div>
+    <div class="flex justify-end space-x-2">
+      <button type="button" class="px-4 py-2 bg-gray-300 rounded">
+        Cancel
+      </button>
+      <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+        Save
+      </button>
+    </div>
+  </form>
+</app-modal>

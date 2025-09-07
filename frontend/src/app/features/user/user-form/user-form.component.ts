@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { ModalComponent } from '../../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-user-form',
-  imports: [],
+  imports: [CommonModule, ModalComponent],
   templateUrl: './user-form.component.html',
-  styleUrl: './user-form.component.css'
 })
 export class UserFormComponent {
-
+  @Input() isOpen = false;
 }
