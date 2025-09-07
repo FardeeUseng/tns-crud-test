@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ModalComponent } from '../../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-department-form',
-  imports: [],
+  imports: [ModalComponent],
   templateUrl: './department-form.component.html',
-  styleUrl: './department-form.component.css'
 })
 export class DepartmentFormComponent {
-
+  @Input() isOpen = false;
 }

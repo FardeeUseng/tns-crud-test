@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DepartmentFormComponent } from './features/department/department-form/department-form.component';
 import { DepartmentListComponent } from './features/department/department-list/department-list.component';
 import { UserFormComponent } from './features/user/user-form/user-form.component';
@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   currentView: 'department' | 'user' = 'department';
-  isFormOpen = false;
+  @Input() isFormOpen = false;
 
   switchView(type: 'department' | 'user') {
     this.currentView = type;
