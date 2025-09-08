@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using MyApiProject.Models;
+using Backend.Models;
 
-namespace MyApiProject.Data;
+namespace Backend.Data;
 
 public class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+  public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-    public DbSet<Department> Departments => Set<Department>();
+  public DbSet<Department> Departments => Set<Department>();
+  public DbSet<User> Users => Set<User>();
 }
