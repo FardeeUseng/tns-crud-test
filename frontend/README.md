@@ -1,59 +1,68 @@
-# Frontend
+# Angular Department Management Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+Frontend สำหรับระบบจัดการ Department (Add / Edit / Delete / List)  
+สร้างด้วย Angular (Standalone Components), Tailwind CSS และ SweetAlert2
 
-## Development server
+---
 
-To start a local development server, run:
+## 🛠 Tech Stack
+- Angular 15+ (Standalone Components)
+- Tailwind CSS (Styling)
+- SweetAlert2 (Alert / Confirm Dialogs)
+- HttpClient (สำหรับเรียก API)
+- Reactive Forms (Form Validation)
 
-```bash
+---
+
+## โครงสร้างโปรเจค
+
+src/
+├── app/
+│   ├── features/                         # ✅ เก็บ feature แต่ละ module (แยก domain ชัดเจน)
+│   │   ├── department/                   # Feature: Department Management
+│   │   │   ├── components/               # UI component เฉพาะ feature นี้
+│   │   │      ├── department-list/
+│   │   │      │   ├── department-list.component.ts          # Logic แสดงรายการ department
+│   │   │      │   ├── department-list.component.html        # Template
+│   │   │      ├── department-form/
+│   │   │          ├── department-form.component.ts          # Logic ฟอร์ม Add/Edit
+│   │   │          ├── department-form.component.html        # Template ฟอร์ม
+│   │   │
+│   │   ├── user/                        # Feature: User Management
+│   │      ├── components/
+│   │         ├── user-list/
+│   │         │   ├── user-list.component.ts
+│   │         │   ├── user-list.component.html
+│   │         ├── user-form/
+│   │             ├── user-form.component.ts
+│   │             ├── user-form.component.html
+│   │
+│   ├── shared/                          # ✅ เก็บสิ่งที่ใช้ซ้ำได้ในหลาย feature
+│   │   ├── components/                  # UI ที่ใช้ซ้ำ เช่น modal, button
+│   │   │   └── modal/                   
+│   │   │       ├── modal.component.ts
+│   │   │       └── modal.component.html
+│   │   ├── services/                    
+│   │   │   ├── department.service.ts    # Service กลางที่เรียก API
+│   │   │   └── user.service.ts          
+│   │   └── models/                      # Interface / TypeScript model
+│   │       ├── department.model.ts     
+│   │       └── user.model.ts            
+│   │
+│   ├── app.component.ts                 # Root component
+│   ├── app.component.html
+│   ├── app.config.ts                    
+│   └── app.routes.ts                               
+│
+├── styles.css                     
+│
+├── main.ts                              
+└── index.html                           
+
+## ⚡ การใช้งาน
+
+### 1. ติดตั้ง dependencies
+npm install
+
+### 2. รัน Angular dev server
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
