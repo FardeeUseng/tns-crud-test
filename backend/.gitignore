@@ -1,0 +1,35 @@
+# Build results
+bin/
+obj/
+
+# VS Code / Visual Studio
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# Config (local only)
+appsettings.Development.json
+
+# EF Core migrations snapshot (optional ถ้าไม่อยากเก็บ)
+# Migrations/
+
+# Temp files
+*.tmp
+*.temp
+*.dbmdl
+*.bak
+
+# Dotnet generated
+*.lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
