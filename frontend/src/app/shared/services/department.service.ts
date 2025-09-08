@@ -19,7 +19,7 @@ export class DepartmentService {
     return this.http.get<IDepartment>(`${this.apiUrl}/departments/${id}`)
   }
 
-  createDepartment(data: { name: string }): Observable<void> {
+  createDepartment(data: Omit<IDepartment, "id">): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}/departments`, data)
   }
 

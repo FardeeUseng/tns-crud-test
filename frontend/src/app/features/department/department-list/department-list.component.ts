@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DepartmentService } from '../../../shared/services/department.service';
 import { IDepartment } from '../../../shared/model/department';
@@ -9,23 +9,12 @@ import Swal from 'sweetalert2';
   imports: [CommonModule],
   templateUrl: './department-list.component.html',
 })
-export class DepartmentListComponent implements OnInit {
+export class DepartmentListComponent {
   @Output() editDepartment = new EventEmitter<IDepartment>();
-  departments: IDepartment[] = [];
+  @Output() refreshDataDepartment = new EventEmitter<void>();
+  @Input() departments: IDepartment[] = [];
 
   constructor(private departmentSevice: DepartmentService) {}
-
-  ngOnInit(): void {
-    this.loadDataDepartments();
-  }
-
-  loadDataDepartments() {
-    this.departmentSevice.getAllDepartment().subscribe({
-      next: (response) => {
-        this.departments = response;
-      },
-    });
-  }
 
   onEditDepartment(department: IDepartment) {
     this.editDepartment.emit(department);
@@ -45,7 +34,7 @@ export class DepartmentListComponent implements OnInit {
     this.departmentSevice.deleteDepartment(id).subscribe({
       next: () => {
         Swal.fire('Updated!', 'Department deleted successfully.', 'success');
-        this.loadDataDepartments();
+        this.refreshDataDepartment.emit()
       },
       error: () => {
         Swal.fire('Error!', 'Failed to delete department.', 'error');

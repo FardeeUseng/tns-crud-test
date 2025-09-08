@@ -1,34 +1,60 @@
-<app-modal title="Add Department" [isOpen]="isOpen">
-  <form class="space-y-4">
+<app-modal
+  title="Add User"
+  [isOpen]="isFormOpen"
+  (closeModal)="handleCloseForm()"
+>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="space-y-4">
     <div>
-      <label class="block text-sm font-medium">Department Name</label>
+      <label class="block text-sm font-medium">User Name</label>
       <input
         type="text"
         class="w-full border rounded px-3 py-2 mt-1"
-        placeholder="Department name"
+        placeholder="User name"
+        formControlName="name"
       />
-    </div>
-    <div>
-      <label
-        for="category"
-        class="text-sm font-medium"
-        >Department</label
+      <div
+        *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+        class="text-red-500 text-sm"
       >
+        User name is required
+      </div>
+    </div>
+
+    <div>
+      <label for="category" class="text-sm font-medium">Department</label>
       <select
+        formControlName="departmentId"
         class="bg-gray-50 border text-gray-900 text-sm rounded-lg block w-full p-2.5"
       >
-        <option selected="">Select category</option>
-        <option value="TV">TV/Monitors</option>
-        <option value="PC">PC</option>
-        <option value="GA">Gaming/Console</option>
-        <option value="PH">Phones</option>
+        <option value="" disabled selected>เลือกแผนก</option>
+        <option *ngFor="let dept of departments" [value]="dept.id">
+          {{ dept.name }}
+        </option>
       </select>
+      <div
+        *ngIf="
+          userForm.get('departmentId')?.invalid &&
+          userForm.get('departmentId')?.touched
+        "
+        class="text-red-500 text-sm"
+      >
+        กรุณาเลือกแผนก
+      </div>
     </div>
+
     <div class="flex justify-end space-x-2">
-      <button type="button" class="px-4 py-2 bg-gray-300 rounded">
+      <button
+        type="button"
+        (click)="handleCloseForm()"
+        class="px-4 py-2 bg-gray-300 rounded"
+      >
         Cancel
       </button>
-      <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+      <button
+        type="submit"
+        [disabled]="userForm.invalid"
+        class="px-4 py-2 bg-blue-500 text-white rounded"
+      >
         Save
       </button>
     </div>

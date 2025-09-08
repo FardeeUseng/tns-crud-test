@@ -44,19 +44,30 @@
   <div>
     <ng-container *ngIf="currentView === 'department'; else userBlock">
       <app-department-list
-        #deptList
+        [departments]="departments"
+        (refreshDataDepartment)="loadDataDepartments()"
         (editDepartment)="handleEditDepartment($event)"
       ></app-department-list>
       <app-department-form
         [isFormOpen]="isFormOpen"
         [editDepartment]="editDepartment"
-        (refreshData)="deptList.loadDataDepartments()"
+        (refreshData)="loadDataDepartments()"
         (closeForm)="handleCloseForm()"
       ></app-department-form>
     </ng-container>
     <ng-template #userBlock>
-      <app-user-list></app-user-list>
-      <app-user-form [isOpen]="isFormOpen"></app-user-form>
+      <app-user-list
+        [users]="users"
+        (refreshDataUser)="loadDataUsers()"
+        (editUser)="handleEditUser($event)"
+      ></app-user-list>
+      <app-user-form
+        [isFormOpen]="isFormOpen"
+        [editUser]="editUser"
+        (refreshData)="loadDataUsers()"
+        (closeForm)="handleCloseForm()"
+        [departments]="departments"
+      ></app-user-form>
     </ng-template>
   </div>
 </main>
