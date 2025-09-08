@@ -25,6 +25,7 @@
         </td>
         <td class="px-4 py-2 w-1/10 text-center">
           <button
+            (click)="onEditDepartment(department)"
             class="px-3 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600"
           >
             Edit
@@ -32,6 +33,7 @@
         </td>
         <td class="px-4 py-2 w-1/10 text-center">
           <button
+            (click)="onDeleteDepartment(department.id)"
             class="px-3 py-1 text-sm text-white bg-red-500 rounded hover:bg-red-600"
           >
             Delete

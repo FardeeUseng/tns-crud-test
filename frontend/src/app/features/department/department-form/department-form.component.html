@@ -1,19 +1,38 @@
-<app-modal title="Add Department" [isOpen]="isOpen">
-  <form class="space-y-4">
+<app-modal
+  title="Add Department"
+  [isOpen]="isFormOpen"
+  (closeModal)="handleCloseForm()"
+>
+  <form [formGroup]="deptForm" (ngSubmit)="onSubmit()" class="space-y-4">
     <div>
       <label class="block text-sm font-medium">Department Name</label>
       <input
         type="text"
+        formControlName="name"
         class="w-full border rounded px-3 py-2 mt-1"
         placeholder="Department name"
       />
+      <div
+        *ngIf="deptForm.get('name')?.invalid && deptForm.get('name')?.touched"
+        class="text-red-500 text-sm"
+      >
+        Department name is required
+      </div>
     </div>
 
     <div class="flex justify-end space-x-2">
-      <button type="button" class="px-4 py-2 bg-gray-300 rounded">
+      <button
+        type="button"
+        (click)="handleCloseForm()"
+        class="px-4 py-2 bg-gray-300 rounded"
+      >
         Cancel
       </button>
-      <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+      <button
+        type="submit"
+        class="px-4 py-2 bg-blue-500 text-white rounded"
+        [disabled]="deptForm.invalid"
+      >
         Save
       </button>
     </div>

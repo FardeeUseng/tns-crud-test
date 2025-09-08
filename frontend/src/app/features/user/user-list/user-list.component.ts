@@ -11,11 +11,21 @@ import { UserService } from '../../../shared/services/user.service';
 export class UserListComponent implements OnInit {
   users: IUser[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private api: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((data) => {
-      this.users = data;
+    this.loadUsers();
+  }
+
+  loadUsers() {
+    this.api.getAllUser().subscribe({
+      next: (response) => {
+        this.users = response;
+        console.log("users", response)
+      },
+      error: (error) => {
+        console.error("error", error);
+      }
     })
   }
 }
