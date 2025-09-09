@@ -5,7 +5,7 @@
 >
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="space-y-4">
     <div>
-      <label class="block text-sm font-medium">User Name</label>
+      <label class="block text-sm font-medium">User Name :</label>
       <input
         type="text"
         class="w-full border rounded px-3 py-2 mt-1"
@@ -26,7 +26,7 @@
         formControlName="departmentId"
         class="bg-gray-50 border text-gray-900 text-sm rounded-lg block w-full p-2.5"
       >
-        <option value="" disabled selected>เลือกแผนก</option>
+        <option value="" disabled selected>Select Department</option>
         <option *ngFor="let dept of departments" [value]="dept.id">
           {{ dept.name }}
         </option>
@@ -38,7 +38,7 @@
         "
         class="text-red-500 text-sm"
       >
-        กรุณาเลือกแผนก
+        Select Department :
       </div>
     </div>
 

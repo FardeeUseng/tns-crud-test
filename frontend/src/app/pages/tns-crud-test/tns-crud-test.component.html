@@ -1,0 +1,73 @@
+<main class="my-10 mx-28">
+  <h1 class="text-2xl font-bold">TNS Test</h1>
+  <div class="flex justify-between items-center">
+    <div class="flex gap-x-2 mt-10 mb-5">
+      <button
+        (click)="switchView('department')"
+        class="px-4 py-2 rounded"
+        [ngClass]="
+          currentView === 'department'
+            ? 'bg-blue-500 text-white hover:bg-blue-600'
+            : 'bg-gray-200 hover:bg-gray-300'
+        "
+      >
+        Departments
+      </button>
+      <button
+        (click)="switchView('user')"
+        class="px-4 py-2 rounded"
+        [ngClass]="
+          currentView === 'user'
+            ? 'bg-blue-500 text-white hover:bg-blue-600'
+            : 'bg-gray-200 hover:bg-gray-300'
+        "
+      >
+        Users
+      </button>
+    </div>
+    <button
+      *ngIf="currentView === 'department'"
+      (click)="handleOpenForm()"
+      class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
+    >
+      + Add Department
+    </button>
+    <button
+      *ngIf="currentView === 'user'"
+      (click)="handleOpenForm()"
+      class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
+    >
+      + Add User
+    </button>
+  </div>
+
+  <div>
+    <ng-container *ngIf="currentView === 'department'; else userBlock">
+      <app-department-list
+        [departments]="departments"
+        (refreshDataDepartment)="loadDataDepartments()"
+        (editDepartment)="handleEditDepartment($event)"
+      ></app-department-list>
+      <app-department-form
+        [isFormOpen]="isFormOpen"
+        [editDepartment]="editDepartment"
+        (refreshData)="loadDataDepartments()"
+        (closeForm)="handleCloseForm()"
+      ></app-department-form>
+    </ng-container>
+    <ng-template #userBlock>
+      <app-user-list
+        [users]="users"
+        (refreshDataUser)="loadDataUsers()"
+        (editUser)="handleEditUser($event)"
+      ></app-user-list>
+      <app-user-form
+        [isFormOpen]="isFormOpen"
+        [editUser]="editUser"
+        (refreshData)="loadDataUsers()"
+        (closeForm)="handleCloseForm()"
+        [departments]="departments"
+      ></app-user-form>
+    </ng-template>
+  </div>
+</main>
